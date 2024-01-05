@@ -1,0 +1,52 @@
+<html>
+<head>
+</head>
+<style>
+    #first{
+        height:34%;
+        width:34%;
+        background-color:red;
+        
+    }
+</style>
+</head>
+<body>
+    <h1>BOX GAME</h1>
+    <p id="total">total score:</p>
+    <p id="timer">timer : 1:00 </p>
+    <div onclick="func()" id="first"> </div>
+    
+
+</body>
+<script>
+    var count=0;
+    function func(){
+        count+=1;
+        var a= "total score "+count;
+        document.getElementById("total").innerHTML="total score "+count;
+        document.getElementById("first").style.marginLeft=Math.random()*600+"px";
+        document.getElementById("first").style.marginTop=Math.random()*300+"px";
+    }
+    var seconds=60;
+    function timer(){
+        seconds--;
+        var min=Math.floor(seconds/60);
+        var rem=seconds%60;
+        if(rem<10)
+        {
+            rem="0"+rem;
+        }
+        document.getElementById("timer").innerHTML=min+":"+rem;
+        if(seconds==0)
+        {
+            clearTimeout(timerId);
+            window.alert("gameover");
+            location.reload();
+        }
+        
+    }
+
+    var timerId=setInterval(timer,1000);
+</script>
+
+</html>
